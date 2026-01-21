@@ -1,7 +1,3 @@
-*.mp4
-*.avi
 __pycache__/
-
-# Environnement virtuel
 venv/
 env/

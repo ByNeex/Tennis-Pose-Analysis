@@ -55,7 +55,7 @@ Nous avons réussi à :
 * Tracer la courbe de vitesse du poignet (« la boucle » du coup droit).
 * Identifier les limitations de l'analyse 2D (écrasement des perspectives faussant certains angles).
 
-> Voir le [Rapport complet](report/Rapport_Projet_Tennis.pdf) pour les graphiques détaillés.
+> Voir le [Rapport complet](report/Rapport_Estimation_Pose.pdf) pour les graphiques détaillés.
 
 ---
 
