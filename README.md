@@ -1,67 +1,67 @@
-# Estimation de Pose et Analyse Cinématique : Application au Tennis
+# Pose Estimation and Kinematic Analysis: Application to Tennis
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
 ![MMPose](https://img.shields.io/badge/MMPose-OpenMMLab-red?style=flat)
 ![Colab](https://img.shields.io/badge/Google_Colab-Compatible-orange?style=flat&logo=google-colab)
 
-Ce projet a été réalisé dans le cadre de notre **Double Licence Mathématiques-Informatique**. Il vise à analyser le geste technique du coup droit au tennis en utilisant des techniques de vision par ordinateur (Pose Estimation) et d'analyse cinématique.
+This project was developed as part of our **Double B.Sc. in Mathematics and Computer Science**. It aims to analyze the biomechanics of a tennis forehand stroke using computer vision (Human Pose Estimation) and kinematic analysis techniques.
 
-## Auteurs
-* **Bastien BABU**
-* **Jérémy CLAUX**
-* **Pierre PARODI**
-* **David QASSEMYAR**
-
----
-
-## Description du Projet
-
-L'objectif est d'extraire des données biomécaniques précises à partir d'une simple vidéo de tennisman, puis de modéliser le mouvement pour analyser la vitesse et prédire la trajectoire future du bras.
-
-### Fonctionnalités principales :
-1.  **Détection de pose (Human Pose Estimation) :** Utilisation du modèle **HRNet** (High-Resolution Net) via la librairie MMPose pour identifier 17 points clés (keypoints) du corps.
-2.  **Analyse Cinématique :**
-    * Calcul des vitesses et accélérations du poignet.
-    * Visualisation des trajectoires en 2D.
-    * Lissage des données par moyenne mobile pour réduire le bruit de détection.
-3.  **Prédiction :** Tentative de prédiction de la trajectoire future du mouvement via un réseau de neurones récurrents (**LSTM**).
-
-### Choix Techniques :
-* **Modèle :** Nous avons privilégié **HRNet** sur CPU pour sa précision spatiale et sa robustesse aux occlusions, après avoir expérimenté avec *RTMPose* (dont l'implémentation GPU s'est avérée instable sur notre environnement).
-* **Données :** Traitement image par image pour garantir la stabilité des calculs cinématiques.
+## Authors
+- **Bastien BABU**
+- **Jérémy CLAUX**
+- **Pierre PARODI**
+- **David QASSEMYAR**
 
 ---
 
-## Installation et Utilisation
+## Project Overview
 
-Ce projet a été conçu pour tourner sur **Google Colab** afin de faciliter la gestion des dépendances complexes de `mmcv` et `mmpose`.
+The goal is to extract accurate biomechanical data from a standard video of a tennis player, then model the motion to analyze speed and predict the future trajectory of the arm.
 
-### Lancer le projet :
-1.  Ouvrez le notebook principal : `notebooks/main_analyse_hrnet.ipynb`.
-2.  Cliquez sur le badge "Open in Colab" (si vous hébergez le dépôt sur GitHub).
-3.  Exécutez les cellules séquentiellement. Le script gère l'installation des librairies `mmpose`, `mmdet` et `mmcv-lite` automatiquement.
+### Key Features:
+1. **Human Pose Estimation:** Leveraged the **HRNet** (High-Resolution Net) model via the MMPose library to detect 17 anatomical keypoints.
+2. **Kinematic Analysis:**
+   * Computation of wrist velocity and acceleration.
+   * 2D trajectory visualization.
+   * Data smoothing using a moving average filter to reduce inference noise.
+3. **Trajectory Prediction:** Explored forecasting future arm motion using a Recurrent Neural Network (**LSTM**).
 
-### Structure des fichiers :
-* `notebooks/main_analyse_hrnet.ipynb` : Le code complet (installation, inférence, analyse graphique, LSTM).
-* `notebooks/experiments/` : Contient nos tentatives d'installation de modèles GPU (RTMPose).
-* `report/` : Le rapport complet du projet au format PDF avec les explications détaillées.
-
----
-
-## Résultats
-
-Nous avons réussi à :
-* Générer un squelette fluide du joueur en mouvement.
-* Tracer la courbe de vitesse du poignet (« la boucle » du coup droit).
-* Identifier les limitations de l'analyse 2D (écrasement des perspectives faussant certains angles).
-
-> Voir le [Rapport complet](report/Rapport_Estimation_Pose.pdf) pour les graphiques détaillés.
+### Technical Choices:
+- **Model Selection:** Prioritized **HRNet** on CPU for its high spatial precision and robustness to occlusions, after experimenting with *RTMPose* (whose GPU implementation proved unstable in our environment).
+- **Data Processing:** Frame-by-frame processing to ensure stable kinematic computations.
 
 ---
 
-## Technologies utilisées
-* **Python**
-* **OpenMMLab** (MMPose, MMCV, MMDet, HRNet)
-* **OpenCV** (Traitement vidéo)
-* **Matplotlib** (Visualisation de données)
-* **TensorFlow / Keras** (Modèle LSTM)
+## Installation & Usage
+
+This project was designed to run on **Google Colab** to simplify managing complex `mmcv` and `mmpose` dependencies.
+
+### Running the Project:
+1. Open the main notebook: `notebooks/main_analyse_hrnet.ipynb`.
+2. Click the "Open in Colab" badge (if hosted on GitHub).
+3. Run the cells sequentially. The script automatically handles the installation of `mmpose`, `mmdet`, and `mmcv-lite`.
+
+### Repository Structure:
+- `notebooks/main_analyse_hrnet.ipynb`: Complete pipeline (environment setup, inference, graphical analysis, LSTM).
+- `notebooks/experiments/`: Experimental setups and GPU model attempts (RTMPose).
+- `report/`: Full project report in PDF format with detailed explanations.
+
+---
+
+## Results
+
+Successfully achieved:
+- Generated a smooth skeletal overlay of the player in motion.
+- Plotted the wrist velocity curve (capturing the forehand "loop").
+- Identified the limitations of 2D analysis (perspective distortion skewing certain joint angles).
+
+> See the [Full Report](report/Rapport_Estimation_Pose.pdf) for detailed plots and mathematical explanations.
+
+---
+
+## Tech Stack
+- **Python**
+- **OpenMMLab** (MMPose, MMCV, MMDet, HRNet)
+- **OpenCV** (Video processing)
+- **Matplotlib** (Data visualization)
+- **TensorFlow / Keras** (LSTM model)
